@@ -1,3 +1,5 @@
+import { Viaje } from "../models/Viaje.js";
+
 // req -> lo que enviamos, res-> lo que express nos responde
 const paginaInicio = (req, res) => {
     res.render("inicio", {
@@ -11,9 +13,13 @@ const paginaNosotros = (req, res) => {
     });
 };
 
-const paginaViajes = (req, res) => {
+const paginaViajes = async (req, res) => {
+    // consultar bd
+    const viajes = await Viaje.findAll();
+
     res.render("viajes", {
-        pagina: "Viajes",
+        pagina: "Próximos Viajes",
+        viajes,
     });
 };
 
@@ -23,4 +29,24 @@ const paginaTestimoniales = (req, res) => {
     });
 };
 
-export { paginaInicio, paginaNosotros, paginaViajes, paginaTestimoniales };
+// muestra un viaje por su slug
+const paginaDetalleViaje = async (req, res) => {
+    const { slug } = req.params;
+    try {
+        const viaje = await Viaje.findOne({ where: { slug } });
+        res.render('viaje', {
+            pagina: 'Información viaje',
+            viaje
+        })
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export {
+    paginaInicio,
+    paginaNosotros,
+    paginaViajes,
+    paginaTestimoniales,
+    paginaDetalleViaje,
+};
