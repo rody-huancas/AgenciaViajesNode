@@ -9,9 +9,21 @@ block slider
 block contenido 
     main.container.mt-5 
         h2.text-center.mb-5 Sobre Nosotros
-        .row 
-            .col-md-6
+        .row.mb-5
+            .col-md-5
                 p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae iusto tempora voluptatum ex? Quaerat ipsum quia rerum inventore ut facere sint corrupti nam quas dolorum? Nostrum corrupti pariatur molestias id.
                 p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor deleniti soluta magni nisi inventore impedit iste explicabo velit, aliquid fugit eius cum eaque ullam autem iusto modi in praesentium? Iure!
             .col-md-6
                 img(src="/img/inicio_nosotros.jpg", alt="imagen nostros" class="img-fluid")
+        include ./layout/bloqueViajes
+    .descuento
+        .container 
+            .col-md-6
+                .contenido 
+                    h3 5% de Descuento 
+                    p.titulo Viaje a Canada
+                    p.fecha 20 de Marzo del 2023 - 28 de Marzo de 2023
+                    p.precio 2500 USD
+    .container 
+        h2.nt-5.text-center Testimoniales 
+        include ./layout/bloqueTestimoniales
